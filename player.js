@@ -9,28 +9,28 @@ class Player {
         this.ydir=0;                          // vertical velocity, at start
     }
     update() {
-        for (let i=0; i<this.cor.length-1; i++) {
-            this.cor[i]=this.cor[i+1]; 
-        }
-        if (this.size>=1) {
-            this.cor[this.size-1] = createVector(this.x, this.y); 
-        }
+        // for (let i=0; i<this.cor.length-1; i++) {
+        //     this.cor[i]=this.cor[i+1]; 
+        // }
+        // if (this.size>=1) {
+        //     this.cor[this.size-1] = createVector(this.x, this.y); 
+        // }
         this.x= this.x+this.xdir*side;  
         this.y= this.y+this.ydir*side; 
     }
-    letGrow() {
-        let d= dist(this.x, this.y, pos.x, pos.y); 
-        if (d<1) {
-            this.size++; 
-            return true; 
-        } else {
-            return false; 
-        }
+    // letGrow() {
+    //     let d= dist(this.x, this.y, pos.x, pos.y); 
+    //     if (d<1) {
+    //         this.size++; 
+    //         return true; 
+    //     } else {
+    //         return false; 
+    //     }
 
 
 
-        console.log("should grow now")
-    }
+        // console.log("should grow now")
+    // }
     dir(x,y) {
         this.xdir=x; 
         this.ydir=y; 
@@ -71,7 +71,7 @@ class Player {
         this.score+=100; 
         game.reward.setRandomBreze(); 
         game.reward.drawReward(); 
-        this.letGrow(); 
+        // this.letGrow(); 
         console.log(this.score); 
     }
     drawSnake() {
