@@ -6,7 +6,7 @@ class Game {
         this.width= WIDTH; 
     }
     preloadGame() {
-        
+       
     }
     drawGrid() {
         background("rgb(100,164,143)"); 

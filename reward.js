@@ -3,7 +3,7 @@ class Reward {
         this.x= 400;               //setting starting point of the apple
         this.y= 400;
     }
-    setRandomApple() {
+    setRandomBreze() {
         this.x=Math.floor(Math.random() * 30) * side; 
         this.y=Math.floor(Math.random() * 30)* side; 
     }
