@@ -1,7 +1,7 @@
 const game = new Game(); 
 const player= new Player(); 
 
-let reward; 
+const reward=new Reward(); 
 
 
 function preload() {
@@ -19,15 +19,19 @@ function draw() {
     clear(); 
     frameRate(7); 
     game.drawGrid();
+    game.scoreboard(); 
+    // text("score", 10, 20); 
     game.reward.drawReward(); 
-    game.player.update(); 
+    game.player.update();
     game.player.drawSnake(); 
+    
 }
 
 function keyPressed() {
+    // console.log(game.player.x)
     if (keyCode===40) {
         game.player.moveDown(); 
-        console.log("Moving down")
+        console.log("Moving Down")
     }
     if (keyCode===38) {
         game.player.moveUp(); 
@@ -42,4 +46,6 @@ function keyPressed() {
         console.log("Moving Right")
     }
 }
+
+
 

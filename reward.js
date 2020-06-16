@@ -8,6 +8,6 @@ class Reward {
         this.y=Math.floor(Math.random() * 30)* side; 
     }
     drawReward() {
-        image(rewardImg, this.y, this.x, side, side)
+        image(rewardImg, this.x, this.y, side, side)
     }
 }
