@@ -13,3 +13,7 @@ h1 {
 img {
     height: 25px; 
 }
+
+#instructions {
+    background-color: black;
+}

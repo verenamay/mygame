@@ -1,6 +1,6 @@
 const WIDTH = 600;
 const HEIGHT = WIDTH;
-const SQUARE_SIDE = WIDTH / 30;
+const SQUARE_SIDE = WIDTH / 20;
 const SNAKESPEED = 1; 
 
 

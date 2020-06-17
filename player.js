@@ -1,41 +1,59 @@
 class Player {
-    constructor() {               
-        this.x= 300;                    //starting position
-        this.y= 300;                    // starting position
-        this.cor=[];                    // coordinates is where the snake is going
-        this.size=0;                   // size of snake 
-        this.score=0; 
-        this.xdir=1;                         //horizontal velocity, at start
-        this.ydir=0;                          // vertical velocity, at start
+    constructor() {
+        this.x=240; 
+        this.y=240; 
+        this.xdir=1; 
+        this.ydir=0; 
+        this.tail=[this]; 
+        this.total=0; 
     }
-    dir(x,y) {
-        this.xdir=x; 
-        this.ydir=y; 
-    }
-    letGrow(pos) {                                     // happens when eats food
-        let d= dist(this.x, this.y, pos.x, pos.y); 
-        console.log(d); 
+    eat(position) {
+        let d= dist(this.x, this.y, position.x, position.y); 
         if (d<1) {
-            this.size++; 
-            return true; 
-        } 
-        console.log("should grow now")
+        this.tail.push(this)
+        return true       
     }
-    update() {
-        for (let i=0; i<this.cor.length-1; i++) {
-            this.cor[i]=this.cor[i+1]; 
-        }
-        if (this.size>=1) {
-            this.cor[this.size-1] = createVector(this.x, this.y); 
-        }
+}
+
+    update(){
         this.x= this.x+this.xdir*side;  
         this.y= this.y+this.ydir*side; 
 
         this.x=constrain(this.x, 0, HEIGHT-side); 
         this.y=constrain(this.y, 0, WIDTH-side)
     }
-    
 
+
+
+    drawSnake() {
+        fill('hsb(160, 100%, 100%)');                            // make snake colorful
+        noStroke();                                                 // no border for the snake
+        rect(this.x, this.y, side, side);                       //here I can actually see the snake
+        for (let i = 0; i < this.tail.length - 1; i++) {
+            this.tail[i] = this.tail[i + 1];
+            } 
+        if(this.tail.length){
+            this.tail[this.tail.length - 1] = {...this}
+          }  
+        
+        this.update(this); 
+        this.tail.forEach((elem,index)=>{
+            rect(elem.x, elem.y, side, side);
+            this.tail.find((item,ind) => {
+              if(item.x === elem.x && item.y == elem.y && index !== ind) {
+                console.log("hit border, dead");
+                game.life=false;
+                game.score=0; 
+                return;
+              }
+            })
+          })
+    }
+
+    dir(x,y) {
+        this.xdir=x; 
+        this.ydir=y; 
+    }
     moveDown() {
         this.dir(0,SNAKESPEED); 
     }
@@ -43,29 +61,9 @@ class Player {
         this.dir(0,-SNAKESPEED); 
     }
     moveLeft() {
-        this.dir(-SNAKESPEED,0)
-}
+        this.dir(-SNAKESPEED,0); 
+    }
     moveRight() {
-        this.dir(SNAKESPEED,0)
-    }
-    playerScore() {
-        this.score+=100; 
-        game.reward.setRandomBreze(); 
-        game.reward.drawReward(); 
-        // this.letGrow(); 
-        console.log(this.score); 
-    }
-    drawSnake() {
-        fill('hsb(160, 100%, 100%)'); 
-        rect(this.x, this.y, side, side);                 //here I can actually see the snake
-        if(this.x===game.reward.x && this.y===game.reward.y) {
-            this.playerScore(); 
-            console.log("got it")
-        }
-        
-    }
-    dead() {
-        
+        this.dir(SNAKESPEED,0); 
     }
 }
-
