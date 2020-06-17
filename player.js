@@ -45,10 +45,12 @@ class Player {
             rect(elem.x, elem.y, side, side);
             this.tail.find((item,ind) => {
               if(item.x === elem.x && item.y == elem.y && index !== ind) {
-                console.log("hit border, dead");
+                console.log("dead");
                 game.life=false;
                 this.tail.length=1; 
                 game.score=0; 
+                textSize(150);
+                text("Fail", 180, 300); 
                 return;
               }
             })

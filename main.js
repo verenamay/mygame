@@ -5,15 +5,16 @@ const reward= new Reward();
 
 function preload() {
     rewardImg=loadImage("pictures/breze.png");
-    // snakeImg=loadImage("pictures/snake-head.png")
+    song=loadSound("pictures/bite.mp3")
 }
 
 function setup() {
     let canvas=createCanvas(WIDTH, HEIGHT);
+    
 }
 
 function draw() {
-    frameRate(5); 
+    frameRate(7); 
 
     game.drawGrid();
     game.scoreboard();
@@ -24,7 +25,7 @@ function draw() {
     if(player.eat(reward)){
         reward.setRandomBreze();  
         console.log(`got it, score ${game.score}`); 
-        console.log(player.tail); 
+        song.play();  
     }
 
 }
