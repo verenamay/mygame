@@ -22,9 +22,9 @@ function draw() {
     reward.drawReward(); 
 
     if(player.eat(reward)){
-        reward.setRandomBreze(); 
-        game.score+=100; 
-        console.log(`got it, score ${game.score}`)
+        reward.setRandomBreze();  
+        console.log(`got it, score ${game.score}`); 
+        console.log(player.tail); 
     }
 
 }

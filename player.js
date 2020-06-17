@@ -10,10 +10,14 @@ class Player {
     eat(position) {
         let d= dist(this.x, this.y, position.x, position.y); 
         if (d<1) {
-        this.tail.push(this)
-        return true       
+        this.tail.push(this);       
+        game.score+=100; 
+        return true; 
+        }
+        if (game.score>=game.highscore) {
+            game.highscore=game.score; 
+        }       
     }
-}
 
     update(){
         this.x= this.x+this.xdir*side;  
@@ -43,6 +47,7 @@ class Player {
               if(item.x === elem.x && item.y == elem.y && index !== ind) {
                 console.log("hit border, dead");
                 game.life=false;
+                this.tail.length=1; 
                 game.score=0; 
                 return;
               }
