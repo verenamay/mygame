@@ -1,7 +1,9 @@
 const game = new Game(); 
 const player= new Player(); 
 const reward= new Reward();
-
+let startGame=false; 
+let gameOver=false; 
+ 
 
 function preload() {
     rewardImg=loadImage("pictures/breze.png");
@@ -9,16 +11,26 @@ function preload() {
 }
 
 function setup() {
-    let canvas=createCanvas(WIDTH, HEIGHT);
+    let canvas=createCanvas(WIDTH+200, HEIGHT);
     
 }
 
 function draw() {
-    frameRate(7); 
-
     game.drawGrid();
     game.scoreboard();
 
+    if (gameOver==true) {
+        // fill("white"); 
+        // rect(px, py, pWidth, pHeight);
+        fill("white");
+        textSize(30); 
+        textAlign(CENTER);  
+        text("press any key to try again", px, py, pWidth, pHeight); 
+    } else {
+
+    if (startGame==true) {
+    frameRate(7); 
+    
     player.drawSnake(); 
     reward.drawReward(); 
 
@@ -26,11 +38,24 @@ function draw() {
         reward.setRandomBreze();  
         console.log(`got it, score ${game.score}`); 
         song.play();  
-    }
+     } 
+    } else {
 
+        fill('hsb(160, 100%, 100%)'); 
+        rect(240, 240, side, side);
+        fill("white")
+        textSize(50); 
+        textAlign(CENTER); 
+        text("press any key", px, py, pWidth, pHeight); 
+    } 
+  }
 }
 
 function keyPressed() {
+    startGame=true; 
+    gameOver=false; 
+    console.log("game started"); 
+    
     if (keyCode===40) {
         player.moveDown(); 
         console.log("Moving Down")

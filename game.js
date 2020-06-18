@@ -1,6 +1,6 @@
 class Game {
     constructor() {
-        this.life=true; 
+   
         this.score=0;
         this.highscore=0;  
     }
@@ -19,13 +19,16 @@ class Game {
     }  
     }
     scoreboard() {
-        // fill(255);
-        // rect(0, 650, 650, 40);
         fill("white");
+        noStroke(); 
+        rect(600, 0, 300, 600);
+        fill("rgb(100,164,143)")
         textFont('MuseoModerno');
         textSize(18);
-        text(`score: ${game.score}`, 10, 20); 
-        text(`highscore: ${game.highscore}`, 10, 40);
+
+        image(rewardImg, 630,3, 20, 20)
+        text(`${game.score}`, 670, 20); 
+        text(`highscore: ${game.highscore}`, 680, 40);
     } 
     
 }

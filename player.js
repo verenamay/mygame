@@ -11,7 +11,7 @@ class Player {
         let d= dist(this.x, this.y, position.x, position.y); 
         if (d<1) {
         this.tail.push(this);       
-        game.score+=100; 
+        game.score+=1; 
         return true; 
         }
         if (game.score>=game.highscore) {
@@ -46,11 +46,11 @@ class Player {
             this.tail.find((item,ind) => {
               if(item.x === elem.x && item.y == elem.y && index !== ind) {
                 console.log("dead");
-                game.life=false;
+                gameOver=true;
                 this.tail.length=1; 
                 game.score=0; 
                 textSize(150);
-                text("Fail", 180, 300); 
+                text("upsi", 300, 500); 
                 return;
               }
             })
