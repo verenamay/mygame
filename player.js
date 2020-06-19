@@ -30,8 +30,9 @@ class Player {
 
 
     drawSnake() {
-        fill('hsb(160, 100%, 100%)');                            // make snake colorful
-        noStroke();                                                 // no border for the snake
+        fill('hsb(160, 100%, 100%)');    
+        stroke("black")                        // make snake colorful
+        strokeWeight(0.5);                                                  // no border for the snake
         rect(this.x, this.y, side, side);                       //here I can actually see the snake
         for (let i = 0; i < this.tail.length - 1; i++) {
             this.tail[i] = this.tail[i + 1];
